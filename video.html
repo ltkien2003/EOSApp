@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Jost"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", Arial, sans-serif;
+        text-transform: capitalize;
+        text-decoration: none;
+      }
+      body {
+        min-height: 100vh;
+        background-size: cover;
+        background-position: center;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 0px 7%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 999;
+      }
+      header .logo {
+        font-weight: bolder;
+        font-size: 25px;
+        color: #333;
+      }
+      header .navbar ul {
+        list-style: none;
+      }
+      header .navbar ul li {
+        position: relative;
+        float: left;
+      }
+      header .navbar ul li a {
+        font-size: 16px;
+        padding: 20px;
+        color: #333;
+        display: block;
+      }
+      header .navbar ul li a:hover {
+        background: #333;
+        color: white;
+      }
+      header .navbar ul li ul {
+        position: absolute;
+        left: 0;
+        width: 180px;
+        background: #fff;
+        display: none;
+      }
+      header .navbar ul li ul li {
+        width: 100%;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      header .navbar ul li:focus-within > ul,
+      header .navbar ul li:hover > ul {
+        display: initial;
+      }
+      #menu-bar {
+        display: none;
+      }
+      header label {
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+        display: none;
+      }
+      @media (max-width: 991px) {
+        header {
+          padding: 20px;
+        }
+        header label {
+          display: initial;
+        }
+        header .navbar {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          display: none;
+        }
+        header .navbar ul li {
+          width: 100%;
+        }
+        header .navbar ul li ul {
+          position: relative;
+          width: 100%;
+        }
+        header .navbar ul li ul li {
+          background: #eee;
+        }
+        #menu-bar:checked ~ .navbar {
+          display: initial;
+          background-color: #f9f9f9;
+        }
+      }
+      main {
+        margin-top: 80px;
+      }
+      .play-container {
+        padding-left: 2%;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .play-video {
+        flex-basis: 69%;
+      }
+
+      .right-sidebar {
+        flex-basis: 30%;
+      }
+
+      .play-video iframe {
+        width: 100%;
+      }
+
+      .side-video-list {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+
+      .side-video-list img {
+        width: 100%;
+      }
+
+      .side-video-list .small-thumbnail {
+        flex-basis: 49%;
+      }
+
+      .side-video-list .vid-info {
+        flex-basis: 49%;
+      }
+      .side-video-list .vid-info > a {
+        font-size: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #0f0f0f;
+      }
+      .side-video-list .vid-info a:hover {
+        color: red;
+        transition: all ease 0.3s;
+      }
+      .side-video-list .vid-info p {
+        color: #606060;
+        font-size: 12px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 10px;
+      }
+
+      .play-video h3 {
+        color: #0f0f0f;
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      .play-video .play-video-info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #5a5a5a;
+      }
+
+      .play-video .play-video-info a i {
+        font-size: 20px;
+        margin-right: 8px;
+      }
+
+      .play-video .play-video-info a {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 15px;
+      }
+
+      .play-video hr {
+        border: 0;
+        height: 1px;
+        background: #ccc;
+        margin: 10px 0;
+      }
+      .movie-emoution {
+        margin-top: 10px;
+        display: flex;
+      }
+      .movie-emoution a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #606060;
+      }
+      .vid-description {
+        margin: 15px 0;
+      }
+
+      .vid-description p {
+        font-size: 14px;
+        margin-bottom: 10px;
+        color: #5a5a5a;
+        line-height: 2;
+      }
+
+      @media (max-width: 900px) {
+        .play-video {
+          flex-basis: 100%;
+        }
+
+        .right-sidebar {
+          flex-basis: 100%;
+        }
+
+        .play-container {
+          padding-left: 5%;
+        }
+
+        .vid-description {
+          padding-left: 0;
+        }
+        .play-video .play-video-info a {
+          margin-left: 0;
+          margin-right: 15px;
+          margin-left: 15px;
+        }
+      }
+      .footer {
+        display: flex;
+        flex-flow: row wrap;
+        padding: 30px 30px 20px 30px;
+        color: #2f2f2f;
+        background-color: #fff;
+        border-top: 1px solid #e5e5e5;
+      }
+
+      .footer > * {
+        flex: 1 100%;
+      }
+
+      .footer__addr {
+        margin-right: 1.25em;
+        margin-bottom: 2em;
+      }
+
+      .footer__addr h2 {
+        margin-top: 1.3em;
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      .nav__title {
+        font-weight: 400;
+        font-size: 15px;
+      }
+
+      .footer address {
+        font-style: normal;
+        color: #999;
+      }
+
+      .footer__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 36px;
+        max-width: max-content;
+        background-color: rgb(33, 33, 33, 0.07);
+        border-radius: 100px;
+        color: #2f2f2f;
+        line-height: 0;
+        margin: 0.6em 0;
+        font-size: 1rem;
+        padding: 0 1.3em;
+      }
+
+      .footer ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .footer li {
+        line-height: 2em;
+      }
+
+      .footer a {
+        text-decoration: none;
+      }
+
+      .footer__nav {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .footer__nav > * {
+        flex: 1 50%;
+        margin-right: 1.25em;
+      }
+
+      .nav__ul a {
+        color: #999;
+      }
+
+      .legal {
+        display: flex;
+        flex-wrap: wrap;
+        color: #999;
+        justify-content: center;
+      }
+
+      .heart {
+        color: #2f2f2f;
+      }
+
+      @media screen and (min-width: 40.375em) {
+        .footer__nav > * {
+          flex: 1;
+        }
+
+        .nav__item--extra {
+          flex-grow: 2;
+        }
+
+        .footer__addr {
+          flex: 1 0px;
+        }
+
+        .footer__nav {
+          flex: 2 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="" class="logo">OE</a>
+      <input type="checkbox" id="menu-bar" />
+      <label for="menu-bar">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Góp ý</a></li>
+          <li>
+            <a href="#">Tài khoản</a>
+            <ul>
+              <li><a href="#">Thông tin cá nhân</a></li>
+              <li><a href="#">Thay đổi mật khẩu</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Ngôn ngữ</a>
+            <ul>
+              <li><a href="#">English</a></li>
+              <li><a href="#">Tiếng Việt</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container play-container">
+        <div class="row">
+          <div class="play-video">
+            <iframe
+              width="1046"
+              height="436"
+              src="https://www.youtube.com/embed/TnMrrg9ssXA"
+              title="HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ GIANG, DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+            <h3>
+              HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ GIANG,
+              DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY
+            </h3>
+            <div class="play-video-info">
+              <p>500M Views &bull; 2 Days ago</p>
+              <div class="movie-emoution">
+                <a href="">
+                  <i class="fa-solid fa-thumbs-up"></i> <span>20</span>
+                </a>
+                <a href="">
+                  <i class="fa-solid fa-share"></i> <span>20</span>
+                </a>
+              </div>
+            </div>
+            <hr />
+            <div class="vid-description">
+              <p>
+                HẺM CỤT FULL | NS Ngọc Giàu, NS Việt Anh, Trấn Thành, Lê Giang,
+                Dương Lâm, Quốc Khánh, Hoàng Mèo, Kim Nhã, Lộ Lộ, AQuay, Trúc
+                Trân, Kim Đào, Trọng Hiếu, Bé Bảo Nhi <br />
+                #TranThanh #HemCut #Lazada #phimhaitet #phimhaitet2022 #LeGiang
+                #BaoLam #QuocKhanh #phimhai <br />
+                ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                <br />
+                Chào mừng bạn đến với Youtube chính thức được trực tiếp quản lý
+                bởi MC Trấn Thành, những thành viên của gia đình TRAN THANH
+                Official và METUB Network. <br />
+                Các bạn nhớ Subscribe, Like và Share để ủng hộ tinh thần cho
+                Trấn Thành và nhận được những thông tin, video mới nhất về các
+                hoạt động nghệ thuật của MC Trấn Thành nhé. <br />
+                Fanpage chính thức: <br />
+                https://www.facebook.com/tran.thanh.ne <br />
+                Kênh youtube chính thức: http://metub.net/tranthanh <br />
+                Rất cảm ơn các anh chị, các bạn đã ủng hộ chúng tôi trong suốt
+                thời gian qua!
+              </p>
+            </div>
+
+            <!-- ------Right Sidebar-------- -->
+          </div>
+          <div class="right-sidebar">
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"
+                ><img
+                  src="https://i.ytimg.com/vi/JHLMP_iQWGo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA8f5oO0-7G5MDjP7vNEZUNYaeHSA"
+              /></a>
+              <div class="vid-info">
+                <a href=""
+                  >HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ
+                  GIANG, DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY</a
+                >
+                <p>100M Views &bull; 2 days ago</p>
+                <div class="movie-emoution">
+                  <a href="">
+                    <i class="fa-solid fa-thumbs-up"></i> <span>20</span>
+                  </a>
+                  <a href="">
+                    <i class="fa-solid fa-share"></i> <span>20</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"
+                ><img
+                  src="https://i.ytimg.com/vi/JHLMP_iQWGo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA8f5oO0-7G5MDjP7vNEZUNYaeHSA"
+              /></a>
+              <div class="vid-info">
+                <a href=""
+                  >HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ
+                  GIANG, DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY</a
+                >
+                <p>100M Views &bull; 2 days ago</p>
+                <div class="movie-emoution">
+                  <a href="">
+                    <i class="fa-solid fa-thumbs-up"></i> <span>20</span>
+                  </a>
+                  <a href="">
+                    <i class="fa-solid fa-share"></i> <span>20</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"
+                ><img
+                  src="https://i.ytimg.com/vi/JHLMP_iQWGo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA8f5oO0-7G5MDjP7vNEZUNYaeHSA"
+              /></a>
+              <div class="vid-info">
+                <a href=""
+                  >HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ
+                  GIANG, DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY</a
+                >
+                <p>100M Views &bull; 2 days ago</p>
+                <div class="movie-emoution">
+                  <a href="">
+                    <i class="fa-solid fa-thumbs-up"></i> <span>20</span>
+                  </a>
+                  <a href="">
+                    <i class="fa-solid fa-share"></i> <span>20</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"
+                ><img
+                  src="https://i.ytimg.com/vi/JHLMP_iQWGo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA8f5oO0-7G5MDjP7vNEZUNYaeHSA"
+              /></a>
+              <div class="vid-info">
+                <a href=""
+                  >HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ
+                  GIANG, DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY</a
+                >
+                <p>100M Views &bull; 2 days ago</p>
+                <div class="movie-emoution">
+                  <a href="">
+                    <i class="fa-solid fa-thumbs-up"></i> <span>20</span>
+                  </a>
+                  <a href="">
+                    <i class="fa-solid fa-share"></i> <span>20</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"
+                ><img
+                  src="https://i.ytimg.com/vi/JHLMP_iQWGo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA8f5oO0-7G5MDjP7vNEZUNYaeHSA"
+              /></a>
+              <div class="vid-info">
+                <a href=""
+                  >HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ
+                  GIANG, DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY</a
+                >
+                <p>100M Views &bull; 2 days ago</p>
+                <div class="movie-emoution">
+                  <a href="">
+                    <i class="fa-solid fa-thumbs-up"></i> <span>20</span>
+                  </a>
+                  <a href="">
+                    <i class="fa-solid fa-share"></i> <span>20</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"
+                ><img
+                  src="https://i.ytimg.com/vi/JHLMP_iQWGo/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA8f5oO0-7G5MDjP7vNEZUNYaeHSA"
+              /></a>
+              <div class="vid-info">
+                <a href=""
+                  >HẺM CỤT FULL- TRẤN THÀNH | NS NGỌC GIÀU, NS VIỆT ANH, LÊ
+                  GIANG, DƯƠNG LÂM, QUỐC KHÁNH, LỘ LỘ, A QUAY</a
+                >
+                <p>100M Views &bull; 2 days ago</p>
+                <div class="movie-emoution">
+                  <a href="">
+                    <i class="fa-solid fa-thumbs-up"></i> <span>20</span>
+                  </a>
+                  <a href="">
+                    <i class="fa-solid fa-share"></i> <span>20</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__addr">
+        <h1 class="logo">OE</h1>
+
+        <h2>Contact</h2>
+
+        <address>
+          5534 Somewhere In. The World 22193-10212<br />
+
+          <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
+        </address>
+      </div>
+
+      <ul class="footer__nav">
+        <li class="nav__item">
+          <h2 class="nav__title">Liên kết hữu ích</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Trang chủ</a>
+            </li>
+            <li>
+              <a href="#">Tài khoản</a>
+            </li>
+            <li>
+              <a href="#">Đăng nhập</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav__item">
+          <h2 class="nav__title">Liên kết hữu ích</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Trang chủ</a>
+            </li>
+            <li>
+              <a href="#">Tài khoản</a>
+            </li>
+            <li>
+              <a href="#">Đăng nhập</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav__item">
+          <h2 class="nav__title">Liên kết hữu ích</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Trang chủ</a>
+            </li>
+            <li>
+              <a href="#">Tài khoản</a>
+            </li>
+            <li>
+              <a href="#">Đăng nhập</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav__item">
+          <h2 class="nav__title">Mạng xã hội</h2>
+
+          <ul class="nav__ul">
+            <li>
+              <a href="#">Facebook</a>
+            </li>
+
+            <li>
+              <a href="#">Twitter</a>
+            </li>
+
+            <li>
+              <a href="#">Instagram</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="legal">
+        <p>Copyright © 2023 Apple Inc. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

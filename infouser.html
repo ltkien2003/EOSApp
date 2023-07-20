@@ -1,0 +1,146 @@
+<main id="main">
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li><a href="has-login.html">Trang chủ</a></li>
+        <li>Thông tin tài khoản</li>
+      </ol>
+      <div class="container-xl px-4 mt-4">
+        <!-- Account page navigation-->
+        <nav class="nav nav-borders">
+          <a class="nav-link active ms-0" ng-href="#/"
+            >Thông tin tài khoản</a
+          >
+
+          <a class="nav-link" ng-href="#!security">Bảo mật</a>
+        </nav>
+        <hr class="mt-0 mb-4" />
+        <div class="row">
+          <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+              <div class="card-header">Ảnh đại diện</div>
+              <div class="card-body text-center">
+                <!-- Profile picture image-->
+                <img
+                  ng-src="{{image}}"
+                  class="rounded-circle mb-3"
+                  id="output"
+                  style="width: 150px; height: 150px"
+                  alt="Avatar"
+                />
+                <h5 class="mb-2"><strong>{{username}}</strong></h5>
+                <p class="text-muted">
+                  Thành viên <span class="badge bg-primary">PRO</span>
+                </p>
+                <input
+                  type="file"
+                  id="upload"
+                  hidden
+                  onchange="loadFile(event);"
+                  accept="image/*"
+                />
+                <button class="btn btn-primary" type="file">
+                  <label for="upload" class="btn-primary"
+                    >Cập nhật ảnh mới</label
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-8">
+            <!-- Thay đổi thông tin tài khoản-->
+            <div class="card mb-4">
+              <div class="card-header">Thay đổi thông tin tài khoản</div>
+              <div class="card-body">
+                <form ng-submit="validateUpdateInfo()">
+                  <!-- Form Group (username)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="username">Username</label>
+                    <input
+                      class="form-control"
+                      id="username"
+                      type="text"
+                      placeholder="Nhập username"
+                      value=""
+                      ng-model="username"
+                      disabled
+                    />
+                  </div>
+                  <!-- Form Row-->
+                  <div class="row gx-3 mb-3">
+                    <!-- Form Group (Fullname)-->
+                    <div class="col-md-12">
+                      <label class="small mb-1" for="fullname">Họ và tên</label>
+                      <input
+                        class="form-control"
+                        id="fullname"
+                        type="text"
+                        placeholder="Vui lòng nhập họ và tên"
+                        value=""
+                        ng-model="fullname"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <!-- Form Group (Email)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="email">Địa chỉ email</label>
+                    <input
+                      class="form-control"
+                      id="email"
+                      type="email"
+                      placeholder="Nhập địa chỉ email"
+                      value=""
+                      ng-model="email"
+                      disabled
+                    />
+                  </div>
+                  <!-- Form Row-->
+                  <div class="row gx-3 mb-3">
+                    <!-- Form Group (Phone Number)-->
+                    <div class="col-md-6">
+                      <label class="small mb-1" for="phone"
+                        >Số điện thoại</label
+                      >
+                      <input
+                        class="form-control"
+                        id="phone"
+                        type="tel"
+                        placeholder="Nhập số điện thoại"
+                        value=""
+                        ng-model="phone"
+                        oninput="this.setCustomValidity('')"
+                        required
+                      />
+                    </div>
+                    <!-- Form Group (birthday)-->
+                    <div class="col-md-6">
+                      <label class="small mb-1" for="inputBirthday"
+                        >Ngày sinh</label
+                      >
+                      <input
+                        class="form-control"
+                        id="inputBirthday"
+                        type="date"
+                        name="birthday"
+                        ng-value="{{birthday}}"
+                        ng-model="birthday"
+                      />
+                    </div>
+                  </div>
+                  <!-- Save changes button-->
+                  <button class="btn btn-primary" type="submit">
+                    Lưu thay đổi
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Breadcrumbs -->
+</main>

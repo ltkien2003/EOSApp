@@ -1,0 +1,84 @@
+<main id="main">
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li><a href="has-login.html">Trang chủ</a></li>
+        <li>Bảo mật</li>
+      </ol>
+      <div class="container-xl px-4 mt-4">
+        <!-- Account page navigation-->
+        <nav class="nav nav-borders">
+          <a class="nav-link ms-0" ng-href="#!"
+            >Thông tin tài khoản</a
+          >
+          <a class="nav-link active" ng-href="#!security"
+            >Bảo mật</a
+          >
+        </nav>
+        <hr class="mt-0 mb-4" />
+        <div class="row">
+          <div class="col-lg-12">
+            <!-- Change password card-->
+            <div class="card mb-4">
+              <div class="card-header">Thay đổi mật khẩu</div>
+              <div class="card-body">
+                <form ng-submit="validateChangePassword()">
+                  <!-- Form Group (current password)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="currentPassword"
+                      >Mật khẩu hiện tại</label
+                    >
+                    <input
+                      class="form-control"
+                      id="currentPassword"
+                      type="password"
+                      ng-model="currentPassword"
+                      placeholder="Nhập mật khẩu hiện tại"
+                      required
+                      oninput="this.setCustomValidity('')"
+                    />
+                  </div>
+                  <!-- Form Group (new password)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="newPassword"
+                      >Mật khẩu mới</label
+                    >
+                    <input
+                      class="form-control"
+                      id="newPassword"
+                      type="password"
+                      ng-model="newPassword"
+                      placeholder="Nhập mật khẩu mới"
+                      required
+                      oninput="this.setCustomValidity('')"
+                    />
+                  </div>
+                  <!-- Form Group (confirm password)-->
+                  <div class="mb-3">
+                    <label class="small mb-1" for="confirmPassword"
+                      >Xác nhận mật khẩu mới</label
+                    >
+                    <input
+                      class="form-control"
+                      id="confirmPassword"
+                      type="password"
+                      required
+                      ng-model="confirmPassword"
+                      placeholder="Xác nhận mật khẩu mới"
+                      oninput="this.setCustomValidity('')"
+                    />
+                  </div>
+                  <button class="btn btn-primary" type="submit">
+                    Lưu thay đổi
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Breadcrumbs -->
+</main>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EOS</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link href="assets/css/aos.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="assets/fontawesome-free-6.2.1-web/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="assets/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/angular-async-await@1.1.2/dist/angular-async-await.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  </head>
+
+  <body ng-app="myApp" ng-controller="myCtrl" ng-init="loadData()">
+    <header id="header" class="fixed-top">
+      <div class="container d-flex align-items-center">
+        <h1 class="logo me-auto"><a href="has-login.html">EOS</a></h1>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a class="nav-link scrollto active" href="#home">Trang chủ</a>
+            </li>
+            <li><a class="nav-link scrollto" href="#about">Giới thiệu</a></li>
+            <li>
+              <a class="nav-link scrollto" href="#contact">Góp ý và Liên hệ</a>
+            </li>
+            <li>
+              <a class="nav-link scrollto" href="#faq">Hỏi đáp</a>
+            </li>
+            <li>
+              <a class="nav-link scrollto" href="#subject-list"
+                >Danh mục môn học</a
+              >
+            </li>
+            <li class="dropdown">
+              <a href="#" class="nav-link"
+                ><span>Thi trắc nghiệm</span>
+                <i class="fa-solid fa-chevron-down"></i
+              ></a>
+              <ul>
+                <li>
+                  <a href="#" id="AGILE" ng-click="saveSubject($event)"
+                    >Quản lý dự án Agile</a
+                  >
+                </li>
+                <li class="dropdown">
+                  <a href="#"
+                    ><span>Lập trình Java</span>
+                    <i class="bi bi-chevron-right"></i
+                  ></a>
+                  <ul>
+                    <li>
+                      <a href="#" id="JAVA1" ng-click="saveSubject($event)"
+                        >Lập trình Java 1</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" id="JAVA2" ng-click="saveSubject($event)"
+                        >Lập trình Java 2</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" id="JAVA3" ng-click="saveSubject($event)"
+                        >Lập trình Java 3</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" id="JAVA4" ng-click="saveSubject($event)"
+                        >Lập trình Java 4</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" id="JAVA5" ng-click="saveSubject($event)"
+                        >Lập trình Java 5</a
+                      >
+                    </li>
+                    <li>
+                      <a href="#" id="JAVA6" ng-click="saveSubject($event)"
+                        >Lập trình Java 6</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#" id="KTPP" ng-click="saveSubject($event)"
+                    >Nhập môn kỹ thuật phần mềm</a
+                  >
+                </li>
+                <li>
+                  <a href="#" id="NMLT" ng-click="saveSubject($event)"
+                    >Nhập môn lập trình</a
+                  >
+                </li>
+                <li>
+                  <a href="#" id="TH" ng-click="saveSubject($event)"
+                    >Tin học cơ sở</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="nav-link" href="info.html"
+                ><img ng-src="{{image}}" alt="" width="24px" height="24px"
+              /></a>
+            </li>
+            <li>
+              <a class="nav-link" href="index.html" ng-click="signout()"
+                >Đăng xuất</a
+              >
+            </li>
+          </ul>
+          <i
+            class="fa-solid fa-bars mobile-nav-toggle"
+            id="mobile-nav-toggle"
+          ></i>
+        </nav>
+        <!-- .navbar -->
+      </div>
+    </header>
+    <section id="home" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <h1>Chào mừng bạn đã đến với Website</h1>
+            <h2>
+              Bạn có thể tìm hiểu các khóa học mà website đang cung cấp hiện nay
+            </h2>
+            <div class="d-flex justify-content-center justify-content-lg-start">
+              <a href="#about" class="btn-get-started scrollto"
+                >Xem ngay bây giờ</a
+              >
+              <a
+                href="https://youtu.be/QaR4laoEBas"
+                class="glightbox btn-watch-video"
+                ><i class="fa-sharp fa-solid fa-circle-play"></i
+                ><span>Xem video</span></a
+              >
+            </div>
+          </div>
+          <div
+            class="col-lg-6 order-1 order-lg-2 home-img"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <img src="assets/img/home.png" class="img-fluid animated" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <main id="main">
+      <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Giới thiệu</h2>
+          </div>
+
+          <div class="row content">
+            <div class="col-lg-6">
+              <p>
+                EOS là dự án với mục tiêu chính là mang đến phần mềm học online
+                đến với người học.
+              </p>
+              <ul>
+                <li>
+                  <i class="fa-solid fa-check-double"></i> Hỗ trợ nhiều nền tảng
+                  học tập
+                </li>
+                <li>
+                  <i class="fa-solid fa-check-double"></i> Mang đến chương trình
+                  thi tối ưu nhất
+                </li>
+                <li>
+                  <i class="fa-solid fa-check-double"></i> Hỗ trợ nhiều tính
+                  năng vượt trội
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <p align="justify">
+                Phần mềm sử dụng phương pháp học tập E-LEARNING có thể áp dụng
+                cho hầu hết các đối tượng học sinh, sinh viên hiện nay. Họ có
+                thể trải nghiệm học trực tuyến vô cùng tiện lợi. Không có giới
+                hạn nào về độ tuổi hay đối tượng học viên có thể tham gia
+                E-LEARNING vì tất cả những ai có nhu cầu đều có thể tham gia dễ
+                dàng và nhanh chóng.
+              </p>
+              <a href="#" class="btn-learn-more">Khám phá ngay</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Góp ý và Liên hệ</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-5 d-flex align-items-stretch">
+              <div class="info">
+                <div class="address">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <h4>Địa chỉ:</h4>
+                  <p>
+                    Số 288, Nguyễn Văn Linh, phường An Khánh, quận Ninh Kiều,
+                    Tp. Cần Thơ.
+                  </p>
+                </div>
+
+                <div class="email">
+                  <i class="fa-solid fa-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>daotaopolyct@fe.edu.vn</p>
+                </div>
+
+                <div class="phone">
+                  <i class="fa-solid fa-phone"></i>
+                  <h4>Điện thoại:</h4>
+                  <p>(0292) 7300 468</p>
+                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.877608157931!2d105.75497671471189!3d10.026957492832688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a089d294a53693%3A0xf3d0fb7758da72d0!2zVHLGsOG7nW5nIGNhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYyBD4bqnbiBUaMah!5e0!3m2!1sen!2s!4v1673366250972!5m2!1sen!2s"
+                  frameborder="0"
+                  style="border: 0; width: 100%; height: 290px"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+              <form ng-submit="sendContact()" role="form" class="email-form">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="fullname">Họ tên</label>
+                    <input
+                      type="text"
+                      name="fullname"
+                      class="form-control"
+                      id="fullname"
+                      ng-model="fullname"
+                      required
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="email">Email của bạn</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="email"
+                      ng-model="email"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="subject">Chủ đề</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="subject"
+                    id="subject"
+                    ng-model="subject"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="message">Nội dung</label>
+                  <textarea
+                    class="form-control"
+                    name="message"
+                    rows="10"
+                    ng-model="message"
+                    required
+                  ></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">
+                    Lời nhắn của bạn đã được gửi đi. Cảm ơn!
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit">Gửi góp ý</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="faq" class="faq section-bg">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Hỏi đáp</h2>
+            <p>Các câu hỏi</p>
+          </div>
+
+          <div class="faq-list">
+            <ul>
+              <li
+                data-aos="fade-up"
+                data-aos-delay="100"
+                class="aos-init aos-animate"
+              >
+                <i class="fa-solid fa-circle-question icon-help"></i>
+                <a
+                  data-bs-toggle="collapse"
+                  class="collapse"
+                  data-bs-target="#faq-list-1"
+                  aria-expanded="true"
+                  >Ngôn ngữ lập trình Java là gì?
+                  <i class="fa-solid fa-chevron-down icon-show"></i
+                  ><i class="fa-solid fa-chevron-up icon-close"></i
+                ></a>
+                <div
+                  id="faq-list-1"
+                  class="collapse show"
+                  data-bs-parent=".faq-list"
+                >
+                  <p align="justify">
+                    Java là một ngôn ngữ lập trình được sử dụng rộng rãi để viết
+                    mã cho các ứng dụng web. Ngôn ngữ này là lựa chọn phổ biến
+                    của các nhà phát triển trong hơn 2 thập niên. Hiện nay có
+                    hàng triệu ứng dụng Java đang được sử dụng. Java là một ngôn
+                    ngữ đa nền tảng, hướng đến đối tượng, lấy mạng làm trung tâm
+                    và có thể được sử dụng như một nền tảng. Đây là một ngôn ngữ
+                    lập trình nhanh, bảo mật, đáng tin cậy dùng để viết mã cho
+                    mọi thứ từ ứng dụng di động, phần mềm doanh nghiệp cho đến
+                    các ứng dụng dữ liệu lớn và công nghệ phía máy chủ.
+                  </p>
+                </div>
+              </li>
+
+              <li
+                data-aos="fade-up"
+                data-aos-delay="200"
+                class="aos-init aos-animate"
+              >
+                <i class="fa-solid fa-circle-question icon-help"></i>
+                <a
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq-list-2"
+                  class="collapsed"
+                  aria-expanded="false"
+                  >Agile là gì?
+                  <i class="fa-solid fa-chevron-down icon-show"></i
+                  ><i class="fa-solid fa-chevron-up icon-close"></i
+                ></a>
+                <div
+                  id="faq-list-2"
+                  class="collapse"
+                  data-bs-parent=".faq-list"
+                >
+                  <p align="justify">
+                    Agile là một phương pháp phát triển phần mềm linh hoạt, là
+                    một hướng tiếp cận cụ thể cho việc quản lý dự án phần mềm.
+                    Nó gồm một quá trình làm việc tương tác và tích hợp để có
+                    thể đưa sản phẩm đến tay người dùng càng nhanh càng tốt.
+                  </p>
+                </div>
+              </li>
+
+              <li
+                data-aos="fade-up"
+                data-aos-delay="300"
+                class="aos-init aos-animate"
+              >
+                <i class="fa-solid fa-circle-question icon-help"></i>
+                <a
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq-list-3"
+                  class="collapsed"
+                  aria-expanded="false"
+                  >Tin học văn phòng là gì?
+                  <i class="fa-solid fa-chevron-down icon-show"></i
+                  ><i class="fa-solid fa-chevron-up icon-close"></i
+                ></a>
+                <div
+                  id="faq-list-3"
+                  class="collapse"
+                  data-bs-parent=".faq-list"
+                >
+                  <p align="justify">
+                    Tin học văn phòng là một nhánh trong ngành CÔNG NGHỆ THÔNG
+                    TIN, chú trọng đến khả năng xử lý các công việc thường được
+                    sử dụng trong văn phòng như: thao tác với văn bản, bảng
+                    tính, trình chiếu. Tin học văn phòng gồm bộ công cụ
+                    Microsoft Office liên quan như Microsoft Office Word,
+                    Microsoft Office Excel, Microsoft Office Power Point,
+                    Microsoft Office Access, … với rất nhiều các phiên bản khác
+                    nhau nhưng về cơ bản là phục vụ cho công việc văn phòng nói
+                    chung.
+                  </p>
+                </div>
+              </li>
+
+              <li
+                data-aos="fade-up"
+                data-aos-delay="500"
+                class="aos-init aos-animate"
+              >
+                <i class="fa-solid fa-circle-question icon-help"></i>
+                <a
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq-list-5"
+                  class="collapsed"
+                  aria-expanded="false"
+                  >Nhập môn kỹ thuật phần mềm là gì?
+                  <i class="fa-solid fa-chevron-down icon-show"></i
+                  ><i class="fa-solid fa-chevron-up icon-close"></i
+                ></a>
+                <div
+                  id="faq-list-5"
+                  class="collapse"
+                  data-bs-parent=".faq-list"
+                >
+                  <p align="justify">
+                    Môn học này sẽ giúp bạn hiểu được các khái niệm cơ bản của
+                    kỹ thuật phần mềm, từ đó nắm được nhiều công việc cần làm
+                    ngoài việc lập trình và cách thức phối hợp nhóm để làm ra và
+                    triển khai một phần mềm. Bạn sẽ hiểu hơn làm một phần mềm
+                    không phải là phần lớn là việc lập trình, đặc biệt với các
+                    hệ thống lớn mà còn có các công việc của các bên liên quan,
+                    các yêu cầu từ sơ bộ đến chi tiết, các hoạt động thiết kế,
+                    lập trình, kiểm thử và triển khai cũng như vận hành một phần
+                    mềm do một hoặc nhiều nhóm phối hợp làm việc một cách bài
+                    bản nhưng có độ linh hoạt và được quản lý chặt chẽ.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="subject-list" class="subject-list">
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Các video bài học online</h2>
+            <p>
+              Người học chủ động lựa chọn được các khóa học trực tuyến phù hợp
+              với nhu cầu phát triển bản thân của mình. Họ có thể học với tốc độ
+              phù hợp với mình mà không bị ảnh hưởng bởi các chương trình học cố
+              định kéo dài trong nhiều tháng như lớp học truyền thống.
+            </p>
+          </div>
+
+          <ul
+            id="subject-list-flters"
+            class="d-flex justify-content-center"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <li data-filter="*" class="filter-active">Tất cả</li>
+            <li data-filter=".filter-card">Quản lý dự án Agile</li>
+          </ul>
+
+          <div
+            class="row subject-list-container"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="col-lg-4 col-md-6 subject-list-item filter-card">
+              <div class="subject-list-img">
+                <img
+                  src="assets/img/subject-list/agile.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="subject-list-info">
+                <h4>Bài học 1</h4>
+                <p>Giới thiệu</p>
+                <a
+                  href="assets/img/subject-list/agile.png"
+                  data-gallery="subject-listGallery"
+                  class="subject-list-lightbox preview-link"
+                  title="Card 1"
+                  ><i class="fa-solid fa-plus"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 subject-list-item filter-card">
+              <div class="subject-list-img">
+                <img
+                  src="assets/img/subject-list/scrum.jpg"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="subject-list-info">
+                <h4>Bài học 2</h4>
+                <p>Giới thiệu</p>
+                <a
+                  href="assets/img/subject-list/scrum.jpg"
+                  data-gallery="subject-listGallery"
+                  class="subject-list-lightbox preview-link"
+                  title="Card 2"
+                  ><i class="fa-solid fa-plus"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 subject-list-item filter-card">
+              <div class="subject-list-img">
+                <img
+                  src="assets/img/subject-list/testing.png"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div class="subject-list-info">
+                <h4>Bài học 3</h4>
+                <p>Giới thiệu</p>
+                <a
+                  href="assets/img/subject-list/testing.png"
+                  data-gallery="subject-listGallery"
+                  class="subject-list-lightbox preview-link"
+                  title="Card 3"
+                  ><i class="fa-solid fa-plus"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>EOS</h3>
+              <p>
+                Số 288, Nguyễn Văn Linh, phường An Khánh, quận Ninh Kiều, Tp.
+                Cần Thơ. <br />
+                <strong>Điện thoại:</strong> (0292) 7300 468<br />
+                <strong>Email:</strong> daotaopolyct@fe.edu.vn<br />
+              </p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Liên kết hữu ích</h4>
+              <ul>
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#contact">Góp ý và Liên hệ</a></li>
+                <li><a href="#faq">Hỏi đáp</a></li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Dịch vụ</h4>
+              <ul>
+                <li><a href="#">Thi trắc nghiệm</a></li>
+                <li><a href="#subject-list">Học online</a></li>
+                <li><a href="#subject-list">Đăng ký môn học</a></li>
+                <li><a href="signup.html">Đăng ký tài khoản</a></li>
+              </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Mạng xã hội</h4>
+              <p>
+                Các bạn có thể tương tác với tôi thông qua các trang mạng xã hội
+                bên dưới
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"
+                  ><i class="fa-brands fa-twitter"></i
+                ></a>
+                <a href="#" class="facebook"
+                  ><i class="fa-brands fa-facebook-f"></i
+                ></a>
+                <a href="#" class="instagram"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a href="#" class="google-plus"
+                  ><i class="fa-brands fa-google-plus-g"></i
+                ></a>
+                <a href="#" class="tiktok"
+                  ><i class="fa-brands fa-tiktok"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="preloader"></div>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="fa-solid fa-arrow-up"></i
+    ></a>
+
+    <!-- JS Files -->
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/glightbox.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--  Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

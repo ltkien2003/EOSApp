@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EOS</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Files -->
+    <link href="assets/css/aos.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/glightbox.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/login.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="assets/fontawesome-free-6.2.1-web/css/all.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.0.0/crypto-js.min.js"></script>
+  </head>
+
+  <body ng-app="myApp" ng-controller="myCtrl" ng-init="reload()">
+    <div class="login">
+      <div class="container main">
+        <div class="row">
+          <div class="col-md-6 slide-image"></div>
+          <div class="col-md-6 right">
+            <div class="input-box">
+              <header>
+                <h1 class="logo me-auto"><a href="index.html">EOS</a></h1>
+              </header>
+              <form ng-submit="hashPassword()">
+                <div class="input-field">
+                  <input
+                    type="text"
+                    class="input"
+                    id="email"
+                    required
+                    autocomplete="off"
+                    ng-model="email"
+                    oninput="this.setCustomValidity('')"
+                  />
+                  <label for="email">Email</label>
+                </div>
+                <div class="input-field">
+                  <input
+                    type="password"
+                    class="input"
+                    id="password"
+                    required
+                    autocomplete="off"
+                    ng-model="password"
+                    oninput="this.setCustomValidity('')"
+                  />
+                  <label for="password">Mật khẩu</label>
+                </div>
+                <div class="input-field">
+                  <input
+                    type="submit"
+                    class="submit"
+                    value="Đăng nhập"                  />
+                </div>
+              </form>
+              <div class="signin">
+                <span
+                  >Bạn chưa có tài khoản?
+                  <a href="signup.html">Đăng ký tại đây</a></span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="preloader"></div>
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="fa-solid fa-arrow-up"></i
+    ></a>
+    <script src="assets/js/all.js"></script>
+    <!-- <script>
+      var app = angular.module("myApp", []);
+      app.controller("myCtrl", function ($scope, $http) {
+        $scope.hashPassword = function () {
+          const encryptedText = CryptoJS.MD5($scope.password).toString();
+          $scope.load(encryptedText);
+          console.log(encryptedText);
+        };
+        $scope.load = function (encryptedText) {
+          $http
+            .get(
+              "https://quiz-app-75e7a-default-rtdb.firebaseio.com/students/.json"
+            )
+            .then(function (response) {
+              const students = Object.values(response.data);
+              const targetStudent = students.find(
+                (student) =>
+                  student.password === encryptedText &&
+                  student.username === $scope.username
+              );
+              const targetIndex = students.findIndex(
+                (student) =>
+                  student.password === encryptedText &&
+                  student.username === $scope.username
+              );
+              if (targetStudent == undefined) {
+                console.log("Sai password");
+              } else {
+                console.log("Đúng password");
+                console.log(Object.entries(targetStudent));
+              }
+            });
+        };
+      });
+    </script> -->
+    <!-- JS Files -->
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap-show-toast.js"></script>
+    <script src="assets/js/glightbox.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <!--  Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

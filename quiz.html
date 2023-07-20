@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>EOS</title>
+  <link rel="shortcut icon" href="#">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet" />
+
+  <!-- CSS Files -->
+  <link href="assets/css/aos.css" rel="stylesheet" />
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/fontawesome-free-6.2.1-web/css/all.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/unorm@1.6.0/lib/unorm.min.js"></script>
+  <script src="assets/js/all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/angular-async-await@1.1.2/dist/angular-async-await.min.js"></script>
+  <style>
+    .btn-outline-primary {
+      --bs-btn-color: #47b2e4 !important;
+      --bs-btn-border-color: #47b2e4 !important;
+      --bs-btn-active-bg: #47b2e4 !important;
+      --bs-btn-active-border-color: #47b2e4 !important;
+    }
+
+    .form-check-input:checked {
+      background-color: #47b2e4;
+      border-color: #47b2e4;
+    }
+
+    .send {
+      background: #47b2e4;
+      border: 0;
+      padding: 12px 34px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 50px;
+    }
+
+    .send:hover {
+      background: #209dd8;
+    }
+
+    .text-bg-info {
+      color: white !important;
+      background-color: #209dd8;
+      border: 0 !important;
+    }
+  </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl1" ng-init="loadData();loadQuestions();">
+  <header id="header" class="fixed-top header-inner-pages">
+    <div class="container d-flex align-items-center">
+      <h1 class="logo me-auto"><a href="index.html">EOS</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li>
+            <a class="nav-link scrollto active" href="has-login.html">Trang chủ</a>
+          </li>
+          <li><a class="nav-link scrollto" href="has-login.html#about">Giới thiệu</a></li>
+          <li>
+            <a class="nav-link scrollto" href="has-login.html#contact">Góp ý và Liên hệ</a>
+          </li>
+          <li>
+            <a class="nav-link scrollto" href="has-login.html#faq">Hỏi đáp</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#subject">Danh mục môn học</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="nav-link scrollto"><span>Thi trắc nghiệm</span>
+              <i class="fa-solid fa-chevron-down"></i></a>
+            <ul>
+              <li><a href="#" id="AGILE" ng-click="saveSubject($event)">Quản lý dự án Agile</a></li>
+              <li class="dropdown">
+                <a href="#"><span>Lập trình Java</span>
+                  <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li>
+                    <a href="#" id="JAVA1" ng-click="saveSubject($event)">Lập trình Java 1</a>
+                  </li>
+                  <li>
+                    <a href="#" id="JAVA2" ng-click="saveSubject($event)">Lập trình Java 2</a>
+                  </li>
+                  <li>
+                    <a href="#" id="JAVA3" ng-click="saveSubject($event)">Lập trình Java 3</a>
+                  </li>
+                  <li>
+                    <a href="#" id="JAVA4" ng-click="saveSubject($event)">Lập trình Java 4</a>
+                  </li>
+                  <li>
+                    <a href="#" id="JAVA5" ng-click="saveSubject($event)">Lập trình Java 5</a>
+                  </li>
+                  <li>
+                    <a href="#" id="JAVA6" ng-click="saveSubject($event)">Lập trình Java 6</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#" id="KTPP" ng-click="saveSubject($event)">Nhập môn kỹ thuật phần mềm</a></li>
+              <li><a href="#" id="NMLT" ng-click="saveSubject($event)">Nhập môn lập trình</a></li>
+              <li><a href="#" id="TH" ng-click="saveSubject($event)">Tin học cơ sở</a></li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link" href="info.html"><img ng-src="{{image}}" alt="" width="24px" height="24px" /></a>
+          </li>
+          <li>
+            <a class="nav-link" href="index.html" ng-click="signout()">Đăng xuất</a>
+          </li>
+        </ul>
+        <i class="fa-solid fa-bars mobile-nav-toggle" id="mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+    </div>
+  </header>
+  <main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+        <ol>
+          <li><a href="has-login.html">Trang chủ</a></li>
+          <li>Thi trắc nghiệm</li>
+        </ol>
+        <h2 class="text-center">MULTIPLE CHOICE EXAM</h2>
+        <div class="countdown d-flex justify-content-center text-center my-4">
+          <div class="container-hour">
+            <h3 class="hour">0</h3>
+            <h3>Hour</h3>
+          </div>
+          <div class="container-minute mx-5">
+            <h3 class="minute">{{timeLeftInMinutes()}}</h3>
+            <h3>Minute</h3>
+          </div>
+          <div class="container-second">
+            <h3 class="second">{{timeLeftInSeconds()}}</h3>
+            <h3>Second</h3>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <form ng-submit="getPoint()">
+              <div class="quiz" ng-repeat="q in questions">
+                <h5 class="card-title">Câu {{$index+1}}: {{q.content}}</h5>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault{{$index}}"
+                    id="flexRadioDefault1{{$index}}" ng-value="q.option1" ng-model="selectedAnswer[$index]"
+                    ng-change="saveAnswer(q.question_id, selectedAnswer[$index])" required />
+                  <label class="form-check-label w-100" for="flexRadioDefault1{{$index}}">
+                    {{q.option1}}
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault{{$index}}"
+                    id="flexRadioDefault2{{$index}}" ng-model="selectedAnswer[$index]" ng-value="q.option2"
+                    ng-change="saveAnswer(q.question_id, selectedAnswer[$index])" required />
+                  <label class="form-check-label w-100" for="flexRadioDefault2{{$index}}">
+                    {{q.option2}}
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault{{$index}}"
+                    id="flexRadioDefault3{{$index}}" ng-model="selectedAnswer[$index]" ng-value="q.option3"
+                    ng-change="saveAnswer(q.question_id, selectedAnswer[$index])" required />
+                  <label class="form-check-label w-100" for="flexRadioDefault3{{$index}}">
+                    {{q.option3}}
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault{{$index}}"
+                    id="flexRadioDefault4{{$index}}" ng-model="selectedAnswer[$index]" ng-value="q.option4"
+                    ng-change="saveAnswer(q.question_id, selectedAnswer[$index])" required />
+                  <label class="form-check-label w-100" for="flexRadioDefault4{{$index}}">
+                    {{q.option4}}
+                  </label>
+                </div>
+              </div>
+              <div class="text-center">
+                <button class="send" type="submit">Nộp bài</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Breadcrumbs -->
+  </main>
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>EOS</h3>
+            <p>
+              Số 288, Nguyễn Văn Linh, phường An Khánh, quận Ninh Kiều, Tp.
+              Cần Thơ. <br />
+              <strong>Điện thoại:</strong> (0292) 7300 468<br />
+              <strong>Email:</strong> daotaopolyct@fe.edu.vn<br />
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Liên kết hữu ích</h4>
+            <ul>
+              <li><a href="has-login.html">Trang chủ</a></li>
+              <li><a href="has-login.html#about">Giới thiệu</a></li>
+              <li><a href="has-login.html#contact">Góp ý và Liên hệ</a></li>
+              <li><a href="has-login.html#faq">Hỏi đáp</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Dịch vụ</h4>
+            <ul>
+              <li><a href="#">Thi trắc nghiệm</a></li>
+              <li><a href="has-login.html#subject">Học online</a></li>
+              <li><a href="has-login.html#subject">Đăng ký môn học</a></li>
+              <li><a href="signup.html">Đăng ký tài khoản</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Mạng xã hội</h4>
+            <p>
+              Các bạn có thể tương tác với tôi thông qua các trang mạng xã hội
+              bên dưới
+            </p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa-brands fa-google-plus-g"></i></a>
+              <a href="#" class="tiktok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="fa-solid fa-arrow-up"></i></a>
+  <!-- JS Files -->
+  <script src="assets/js/aos.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/bootstrap-show-toast.js"></script>
+  <script src="assets/js/glightbox.min.js"></script>
+  <script src="assets/js/isotope.pkgd.min.js"></script>
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <!--  Main JS File -->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
